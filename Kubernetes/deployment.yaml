@@ -13,8 +13,8 @@ spec:
         app: devops-app
     spec:
       containers:
-        - name: devops-app
-          image: myrepo/devops-poc:v1
+        - name: demopoc
+          image: akshaygoli/demopoc:v1
           ports:
             - containerPort: 8084
 ---
