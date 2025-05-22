@@ -5,6 +5,7 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub') // Jenkins credentials ID for Docker Hub (username & password)
         DOCKERHUB_REPO = 'akshaygoli/endtoend' // Change to your Docker Hub repo/image
         IMAGE_TAG = "latest" // Or "${env.BUILD_NUMBER}" for unique tags
+        KUBE_CONFIG = "$HOME/.kube/config"
     }
     stages {
         stage('Checkout') {
@@ -43,10 +44,13 @@ pipeline {
         }
     }
 
-        stage('Deploy to Kubernetes') {
+         stage('Deploy to Minikube') {
             steps {
-                sh 'kubectl apply -f kubernetes/deployment.yaml'
+                withEnv(["KUBECONFIG=${KUBE_CONFIG}"]) {
+                    sh 'kubectl apply -f kubernetes/deployment.yaml'
+                }
             }
+        }
         }
     }
 }
