@@ -12,11 +12,7 @@ pipeline {
         git branch: 'main', url: 'https://github.com/Ak1324/Terraform.git'
     }
         }
-        stage('Build') {
-            steps {
-                sh 'mvn clean package'
-            }
-        }
+       
         stage('Build Docker Image') {
             steps {
                 script {
