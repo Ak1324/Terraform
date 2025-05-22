@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: demopoc
-          image: akshaygoli/demopoc:v1
+          image: akshaygoli/endtoend:v1
           ports:
             - containerPort: 8081
 ---
