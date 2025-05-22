@@ -40,7 +40,7 @@ pipeline {
         stage('Deploy to Minikube') {
             steps {
                 withEnv(["KUBECONFIG=${KUBE_CONFIG}"]) {
-                    sh 'kubectl apply -f kubernetes/deployment.yaml'
+                    sh 'kubectl apply -f deployment.yaml'
                 }
             }
         }
