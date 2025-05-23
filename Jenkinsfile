@@ -9,15 +9,15 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-        git branch: 'main', url: 'https://github.com/Ak1324/Terraform.git'
-    }
+                git branch: 'main', url: 'https://github.com/Ak1324/Terraform.git'
+            }
         }
-       stage('Build') {
-    steps {
-        sh 'mvn clean package'
-        sh 'ls -l target/*.jar'
-    }
-    }   
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+                sh 'ls -l target/*.jar'
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 script {
@@ -37,15 +37,13 @@ pipeline {
                 }
             }
         }
-       stage('Deploy to Minikube') {
-      steps {
-        sh '''
-            export KUBECONFIG=/home/ubuntu/.kube/config
-            kubectl get nodes
-            kubectl apply -f deployment.yaml
-        '''
-       }
-    }
+        stage('Deploy to Minikube') {
+            steps {
+                sh '''
+                    kubectl get nodes
+                    kubectl apply -f deployment.yaml
+                '''
+            }
         }
     }
     post {
@@ -53,5 +51,4 @@ pipeline {
             cleanWs()
         }
     }
-}
 }
