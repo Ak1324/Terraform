@@ -4,7 +4,7 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub') // Jenkins credentials ID for Docker Hub
         DOCKERHUB_REPO = 'akshaygoli/endtoend' // Change to your Docker Hub repo/image
         IMAGE_TAG = "latest" // Or "${env.BUILD_NUMBER}" for unique tags
-        KUBECONFIG = '/var/lib/jenkins/.kube/config'
+       
     }
     stages {
         stage('Checkout') {
