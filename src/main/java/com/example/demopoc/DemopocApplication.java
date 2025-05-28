@@ -12,7 +12,7 @@ public class DemopocApplication {
     public static void main(String[] args) {
         SpringApplication.run(DemopocApplication.class, args);
     }
-    @GetMapping("/")
+    @GetMapping("/hello")
     public String home() {
         return "Hello, DevOps!";
     }
